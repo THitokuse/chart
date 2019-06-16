@@ -9,10 +9,24 @@
       data: [120, 300, 200, 210]
     }, {
       label: 'ishin',
-      data: [200, 150, 300, 450]
+      data: [200, 150, 300, 750]
     }]
   };
-  let options;
+  const options = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          suggestedMin: 0,
+          suggestedMax: 400,
+          stepSize: 100,
+          callback: function(value, index, values) {
+            return 'JPY' + value;
+          }
+        }
+      }]
+    }
+  };
+
   const ctx = document.getElementById('my_chart').getContext('2d');
   const myChart = new Chart(ctx, {
     type: type,
